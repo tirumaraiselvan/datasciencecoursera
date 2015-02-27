@@ -1,0 +1,17 @@
+{
+    "contents" : "pollutantmean = function(directory, pollutant, id=1:332) {\n  \n  sum = 0.0\n  count = 0\n  for (i in id) {\n    \n    FilePath = paste(directory, sprintf(\"%.3i.csv\",i), sep=\"\") \n##    print(FilePath)\n    data = read.csv(FilePath)\n    names(data) = c(\"date\", \"sulfate\", \"nitrate\", \"id\")\n    sum = sum + sum(data[pollutant],na.rm =TRUE)\n    count = count +sum(!is.na(data[pollutant]))\n  }\n  \n  return(round(sum/count, digits =3)) \n}\n",
+    "created" : 1424846895716.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1708375775",
+    "id" : "B981A374",
+    "lastKnownWriteTime" : 1425018018,
+    "path" : "~/datascience/rprog/ass1/main.R",
+    "project_path" : "main.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}
