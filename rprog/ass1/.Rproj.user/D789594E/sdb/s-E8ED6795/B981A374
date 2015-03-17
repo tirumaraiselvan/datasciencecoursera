@@ -1,14 +1,14 @@
 {
-    "contents" : "pollutantmean = function(directory, pollutant, id=1:332) {\n  \n  sum = 0.0\n  count = 0\n  for (i in id) {\n    \n    FilePath = paste(directory, sprintf(\"%.3i.csv\",i), sep=\"\") \n##    print(FilePath)\n    data = read.csv(FilePath)\n    names(data) = c(\"date\", \"sulfate\", \"nitrate\", \"id\")\n    sum = sum + sum(data[pollutant],na.rm =TRUE)\n    count = count +sum(!is.na(data[pollutant]))\n  }\n  \n  return(round(sum/count, digits =3)) \n}\n",
+    "contents" : "pollutantmean <- function(directory, pollutant, id = 1:332) {\n  ## 'directory' is a character vector of length 1 indicating\n  ## the location of the CSV files\n  \n  ## 'pollutant' is a character vector of length 1 indicating\n  ## the name of the pollutant for which we will calculate the\n  ## mean; either \"sulfate\" or \"nitrate\".\n  \n  ## 'id' is an integer vector indicating the monitor ID numbers\n  ## to be used\n  \n  ## Return the mean of the pollutant across all monitors list\n  ## in the 'id' vector (ignoring NA values)  \n  sum = 0.0\n  count = 0\n  for (i in id) {\n    \n    FilePath = paste(directory, sprintf(\"/%.3i.csv\",i), sep=\"\") \n    ## print(FilePath)\n    data = read.csv(FilePath, header = TRUE )\n    sum = sum + sum(data[pollutant],na.rm =TRUE)\n    count = count +sum(!is.na(data[pollutant]))\n  }\n  \n  return(round(sum/count, digits =3)) \n}\n",
     "created" : 1424846895716.000,
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "1708375775",
+    "hash" : "3860162625",
     "id" : "B981A374",
-    "lastKnownWriteTime" : 1425018018,
-    "path" : "~/datascience/rprog/ass1/main.R",
-    "project_path" : "main.R",
+    "lastKnownWriteTime" : 1425021253,
+    "path" : "~/datasciencecoursera/rprog/ass1/pollutantmean.R",
+    "project_path" : "pollutantmean.R",
     "properties" : {
         "tempName" : "Untitled1"
     },
